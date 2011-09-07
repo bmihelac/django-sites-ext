@@ -1,0 +1,15 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+  <div id="content-main">
+    <form method="POST" action=".">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <p>
+        <input type="submit" name="confirm" value="{% trans "Submit" %}" id=""/>
+      </p>
+    </form>
+  </div>
+{% endblock %}

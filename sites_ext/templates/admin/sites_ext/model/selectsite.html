@@ -1,0 +1,14 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+  <div id="content-main">
+    <form method="GET" action=".">
+      {{ form.as_p }}
+
+      <p>
+        <input type="submit" name="confirm" value="{% trans "Continue" %}" id=""/>
+      </p>
+    </form>
+  </div>
+{% endblock %}
