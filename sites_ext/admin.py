@@ -48,11 +48,11 @@ class ChangeSiteAdmin(admin.ModelAdmin):
         )
         return my_urls + urls
 
-    def add_view(self, request, **kwargs):
+    def add_view(self, request, *args, **kwargs):
         site_id = self.get_site_id(request)
         if not site_id:
             return self.selectsite(request)
-        return super(ChangeSiteAdmin, self).add_view(request, **kwargs)
+        return super(ChangeSiteAdmin, self).add_view(request, *args, **kwargs)
 
     def get_form(self, request, obj=None, **kwargs):
         form = super(
