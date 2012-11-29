@@ -7,6 +7,7 @@ from django.utils.encoding import force_unicode
 from django.shortcuts import redirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.contrib import messages
 
 
 class ChooseSiteForm(forms.Form):
@@ -99,7 +100,7 @@ class ChangeSiteAdmin(admin.ModelAdmin):
                     original.site = site
                     original.save()
                 msg = _("Site has been changed to %s") % (site)
-                request.user.message_set.create(message=unicode(msg))
+                messages.add_message(request, messages.INFO, msg)
                 info = self.model._meta.app_label, self.model._meta.module_name
                 return redirect('admin:%s_%s_change' % info, original.id)
         else:
